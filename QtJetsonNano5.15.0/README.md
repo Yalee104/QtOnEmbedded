@@ -1,6 +1,6 @@
 # QT5.15.0 compilation for jetson nano
 
-##NOTE: For Nano using the Ubuntu X11 please refer to this page instead [QT on Jetson Nano with X](https://github.com/Yalee104/QtOnEmbedded/tree/main/QtJetsonNano5.15.0WithX)
+## NOTE: For Nano using the Ubuntu X11 please refer to this page instead [QT on Jetson Nano with X](https://github.com/Yalee104/QtOnEmbedded/tree/main/QtJetsonNano5.15.0WithX)
 
 
 Youtube video:
