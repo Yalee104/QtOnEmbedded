@@ -108,8 +108,8 @@ chmod +x sysroot-relativelinks.py
 
 Replace the qmake.conf file with the one in the repo
 ```bash
-cp -r qtbase-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-tk1-pro-g++/ qtbase-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-nano
-gedit qtbase-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-nano/qmake.conf
+cp -r qt-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-tk1-pro-g++/ qt-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-nano
+gedit qt-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-nano/qmake.conf
 ```
 NOTE: Download the qmake.conf from this repo and replace it 
 
@@ -117,7 +117,7 @@ Create a directory for building binaries and configure qt
 
 ```bash
 mkdir qt5buid && cd qt5build
-../qtbase-everywhere-src-5.15.6/configure -opengl desktop -xcb -xcb-xlib -device linux-jetson-nano -device-option CROSS_COMPILE=/opt/qt5jnano/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu- -sysroot /opt/qt5jnano/sysroot -prefix /usr/local/qt5jnano -opensource -confirm-license -force-debug-info -nomake examples -nomake tests -make libs -no-use-gold-linker -v
+../qt-everywhere-src-5.15.6/configure -opengl desktop -xcb -xcb-xlib -device linux-jetson-nano -device-option CROSS_COMPILE=/opt/qt5jnano/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu- -sysroot /opt/qt5jnano/sysroot -prefix /usr/local/qt5jnano -opensource -confirm-license -force-debug-info -nomake examples -nomake tests -make libs -no-use-gold-linker -v
 ```
 After Configuration done you should see like this:
 ```bash
