@@ -76,6 +76,7 @@ cd /opt/qt5jnano/
 ```
 
 Install linaro toolchain
+
 NOTE: below version support up to c++14, suggest to use latest linaro version
 
 ```bash
@@ -84,6 +85,7 @@ tar xf gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
 export PATH=$PATH:/opt/qt5jnano/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu/bin
 ```
 Download qt base 5.15.
+
 NOTE: QT archive source can be found here [QTSource](https://download.qt.io/archive/qt/) 
 
 ```bash
