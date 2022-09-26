@@ -44,6 +44,7 @@ Install dependencies
 sudo apt install ^libxcb.*-dev libx11-xcb-dev
 sudo apt install '.*libxcb.*' libxrender-dev libxi-dev libfontconfig1-dev libudev-dev libgles2-mesa-dev libgl1-mesa-dev gcc git bison python gperf pkg-config make libclang-dev build-essential
 sudo apt install libfontconfig1-dev libudev-dev libegl1-mesa-dev libgbm-dev libgles2-mesa-dev mesa-common-dev libxcomposite1 libx11-xcb-dev libxcb-keysyms1 libxcb-keysyms1-dev libxcb-image0 libxrender-dev libxss-dev libxtst-dev libxrandr-dev
+sudo apt-get install libxkbcommon*
 ```
 
 ## Host
