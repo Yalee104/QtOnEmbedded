@@ -44,7 +44,7 @@ Install dependencies
 sudo apt install ^libxcb.*-dev libx11-xcb-dev
 sudo apt install '.*libxcb.*' libxrender-dev libxi-dev libfontconfig1-dev libudev-dev libgles2-mesa-dev libgl1-mesa-dev gcc git bison python gperf pkg-config make libclang-dev build-essential
 sudo apt install libfontconfig1-dev libudev-dev libegl1-mesa-dev libgbm-dev libgles2-mesa-dev mesa-common-dev libxcomposite1 libx11-xcb-dev libxcb-keysyms1 libxcb-keysyms1-dev libxcb-image0 libxrender-dev libxss-dev libxtst-dev libxrandr-dev
-sudo apt-get install libxkbcommon*
+sudo apt install libxkbcommon*
 ```
 
 ## Host
@@ -76,6 +76,7 @@ cd /opt/qt5jnano/
 ```
 
 Install linaro toolchain
+NOTE: below version support up to c++14, suggest to use latest linaro version
 
 ```bash
 wget https://releases.linaro.org/components/toolchain/binaries/latest-5/aarch64-linux-gnu/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
@@ -83,14 +84,16 @@ tar xf gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
 export PATH=$PATH:/opt/qt5jnano/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu/bin
 ```
 Download qt base 5.15.
+NOTE: QT archive source can be found here [QTSource](https://download.qt.io/archive/qt/) 
 
 ```bash
-wget https://download.qt.io/archive/qt/5.15/5.15.0/submodules/qtbase-everywhere-src-5.15.0.tar.xz
-tar xf qtbase-everywhere-src-5.15.0.tar.xz 
+wget https://download.qt.io/archive/qt/5.15/5.15.6/single/qt-everywhere-opensource-src-5.15.6.tar.xz
+tar xf qt-everywhere-opensource-src-5.15.6.tar.xz 
 ```
 
 Get the related dependencies for sysroot from nano hardware.
 Becareful about the slashes.
+NOTE: Below IP is from Nano, make sure Nano is on the same local network and use 'ipconfig -a' to get the assigned local ip address
 
 ```bash
 rsync -avz root@192.168.16.24:/lib sysroot
@@ -103,14 +106,16 @@ chmod +x sysroot-relativelinks.py
 
 Replace the qmake.conf file with the one in the repo
 ```bash
-cp -r qtbase-everywhere-src-5.15.0/mkspecs/devices/linux-jetson-tk1-pro-g++/ qtbase-everywhere-src-5.15.0/mkspecs/devices/linux-jetson-nano
-gedit qtbase-everywhere-src-5.15.0/mkspecs/devices/linux-jetson-nano/qmake.conf
+cp -r qtbase-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-tk1-pro-g++/ qtbase-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-nano
+gedit qtbase-everywhere-src-5.15.6/mkspecs/devices/linux-jetson-nano/qmake.conf
 ```
+NOTE: Download the qmake.conf from this repo and replace it 
+
 Create a directory for building binaries and configure qt 
 
 ```bash
 mkdir qt5buid && cd qt5build
-../qtbase-everywhere-src-5.15.0/configure -opengl desktop -xcb -xcb-xlib -device linux-jetson-nano -device-option CROSS_COMPILE=/opt/qt5jnano/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu- -sysroot /opt/qt5jnano/sysroot -prefix /usr/local/qt5jnano -opensource -confirm-license -force-debug-info -nomake examples -nomake tests -make libs -no-use-gold-linker -v
+../qtbase-everywhere-src-5.15.6/configure -opengl desktop -xcb -xcb-xlib -device linux-jetson-nano -device-option CROSS_COMPILE=/opt/qt5jnano/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu- -sysroot /opt/qt5jnano/sysroot -prefix /usr/local/qt5jnano -opensource -confirm-license -force-debug-info -nomake examples -nomake tests -make libs -no-use-gold-linker -v
 ```
 After Configuration done you should see like this:
 ```bash
